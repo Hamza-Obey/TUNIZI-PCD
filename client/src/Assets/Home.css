@@ -1,0 +1,12 @@
+.home-container {
+    grid-template-columns: 200px 200px 200px;
+  }.box1 {
+    align-self: stretch;
+  }
+  .box2 {
+    align-self: start;
+  }
+  .box3{
+      width: 400px;
+      align-self: stretch;
+  }
