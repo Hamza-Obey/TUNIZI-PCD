@@ -12,14 +12,14 @@ function SentimentForm() {
   const [test, setTest] = useState(true);
   const [result, setResult] = useState(" VIEW RESULT")
 
-
+  const[positive,setPositive] = useState(false)
   const [sentiment, setSentiment] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
 
   function changement() {
     setTest(!test)
-    if (test == true) {
+    if (test === true) {
       setResult("TRY AGAIN")
 
     }
@@ -43,8 +43,8 @@ function SentimentForm() {
       <div className='sentiment-head'>
         <h1 className='sentiment-headleft'>TUNIZI</h1>
         <div className='sentiment-headright'></div>
-        <button className='signup-button'> SIGN UP </button>
-        <button className='signin-button' > <Link to="login" style={{color:"black",textDecoration:"none"}}>SIGN IN</Link></button>
+        <button className='signup-button'> <Link to="signup" style={{color:"white",textDecoration:"none"}}> SIGN UP</Link> </button>
+        <button className='signin-button' > <Link to="login" style={{color:"black",textDecoration:"none"}}> SIGN IN</Link></button>
       </div>
 
       <h1 className='sentiment-title'>TUNIZI</h1>
@@ -53,15 +53,21 @@ function SentimentForm() {
 
         action=""
       >
-        {test === false ?
+        {  test === false  ?
           <div>
             <div className='sentiment-result '>
 
               <input className='sentiment-sentiment' type="text" value={text}/>
               <p style={{ marginTop: "20px", fontSize: "30px" }}> The sentiment is : </p>
-              <div className='sentiment-classe'>
+              { positive===true ?
+              <div className='sentiment-classe1'>
                 <p className='sentiment-posneg'> POSITIVE</p>
               </div>
+              : 
+              <div className='sentiment-classe2'>
+                <p className='sentiment-posneg'> NEGATIVE</p>
+              </div>
+              }
               <input className="sentiment-btn" type="submit" value={result} onClick={() => changement()} />
             </div>
            

@@ -5,12 +5,12 @@ class Graph extends React.Component {
     super(props);
     this.state = {
       data: [{
-        values: [19, 26, 55],
-        labels: ['Neutral', 'Positif', 'Negatif'],
+        values: [45, 55],
+        labels: ['Positif', 'Negatif'],
         type: 'pie'
       }],
       layout: {
-        height: 400,
+        height: 500,
         width: 500,
        
       }

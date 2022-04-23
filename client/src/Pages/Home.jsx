@@ -4,6 +4,7 @@ import Navbar from '../Components/Navbar'
 import Graph from '../Components/PieChart'
 import AreaChart from '../Components/AreaChart'
 import Stat from '../Components/Stat'
+import AddProduct from '../Components/AddProduct'
 
 
 function Home() {
@@ -18,12 +19,14 @@ function Home() {
       </div>
       <div className='box2'>
         <AreaChart />
-        <hr style={{background:" 1.5px solid black",marginRight:"650px",width:"600px"}}/>
+        
         <Graph />
       </div>
       <div className='box3'>
         <Stat/>
       </div>
+
+      
 
 
 

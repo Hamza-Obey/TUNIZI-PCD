@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "../Assets/Sidebar1.css"
 import AddProduct from './AddProduct'
-import { useState } from 'react'
+import axios from "axios";
+
 
 function Sidebar1() {
-  const [openModal,setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    getProducts();
+  },[]);
+
+  const getProducts = () => {
+    axios.get("http://localhost:5000/produit/get", {
+      headers: {
+        "Content-Type": "application/json",
+
+      },
+    })
+      .then((result) => {
+        setProducts(result.data)  ;
+      })
+      .catch((err) => {
+        console.error("error:${error}")
+
+      });
+
+  }
+  
+
   return (
     <>
       <div>
@@ -15,46 +40,39 @@ function Sidebar1() {
               <p class="search__title">
                 Search for your product :
               </p>
-              <input class="search__input" type="text" placeholder="      SEARCH . . ." />
+              <input class="search__input" type="text" placeholder="     SEARCH . . ." />
             </div>
             <br />
-            <li>
-              <a href="#">
-                Computers
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Phones
-              </a>
-            </li>
+            {/* {console.log(products)} */}
+            {products.map((product,i) => {
+              return(
+              <li>
+                <a href="#">
+                  {product.name}
+                </a>
+              </li> );
+            })} 
 
-            <li>
-              <a href="#">
-                Video-Games
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Electromrnagers
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Accesoirs
-              </a>
-            </li>
           </ul>
-          <p><button className='addproduct-button' 
-          onClick={()=>setOpenModal(true)}
-          
+          <p><button className='addproduct-button'
+            onClick={() => setOpenModal(true)}
+
           >
             Add a new product </button> </p>
 
         </div>
-      </div>
 
-      {openModal && <AddProduct closeModal={setOpenModal}/>}
+      </div>
+      <AddProduct
+
+        setModal={setOpenModal}
+        isOpen={openModal}
+        product={products}
+        setProducts={setProducts}
+
+      />
+
+
     </>
   )
 }

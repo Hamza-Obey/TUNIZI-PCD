@@ -163,7 +163,7 @@
 .addproduct-button {
   border-radius: 30px;
   margin-top: 70px;
-  margin-left: 10px;
+  margin-left: 33px;
   text-align: center;
   border:#FCFEFF;
   outline: 0;
@@ -172,8 +172,8 @@
   background: #FCFEFF -webkit-gradient(linear, left top, left bottom, from(#e9ecee), to(#e9e6e2)) no-repeat;
   text-align: center;
   cursor: pointer;
-  width: 200px;
-  font-size: 20px;
+  width: 150px;
+  font-size: 15px;
   font-family: 'Times New Roman', Times, serif;
 }
 
