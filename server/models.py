@@ -40,8 +40,10 @@ class Comment(db.Model):
        id = db.Column('comment_id', db.Integer, primary_key = True)
        content = db.Column(db.String(400))
        
+       
        def __init__(self, content):
         self.content = content
+        
         
         
        @property
@@ -59,11 +61,15 @@ class Product(db.Model):
         id=db.Column('product_id', db.Integer, primary_key = True)
         name=db.Column(db.String(30))
         desc = db.Column(db.String(500))
+        file =db.Column(db.String(200))
         
         
-        def __init__(self, name,desc):
+        
+        def __init__(self, name,desc,file):
             self.name = name
             self.desc=desc
+            self.file= file
+            
             
         @property
         def serialize(self):
@@ -71,6 +77,6 @@ class Product(db.Model):
          return {
                  'id'         : self.id,
                 'name' : self.name,
-                'desc' :self.desc
-                
+                'desc' :self.desc,
+                "file" :self.file
         }

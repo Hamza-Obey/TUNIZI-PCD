@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import "../Assets/Sidebar1.css"
 import AddProduct from './AddProduct'
 import axios from "axios";
+import {Link} from "react-router-dom"
+import SearchIcon from '@mui/icons-material/Search';
 
 
-function Sidebar1() {
+function Sidebar1(props) {
   const [openModal, setOpenModal] = useState(false)
   const [products, setProducts] = useState([])
 
@@ -37,19 +39,21 @@ function Sidebar1() {
 
           <ul class="sidebar-navigation">
             <div class="search__container">
+               
               <p class="search__title">
                 Search for your product :
               </p>
-              <input class="search__input" type="text" placeholder="     SEARCH . . ." />
+              
+              <input class="search__input" type="text" placeholder="   SEARCH . . ." />  
             </div>
             <br />
-            {/* {console.log(products)} */}
+            
             {products.map((product,i) => {
               return(
-              <li>
-                <a href="#">
+              <li onClick={()=> window.location.reload()}>
+                <Link to={`/home/${product.id}`}>
                   {product.name}
-                </a>
+                </Link>
               </li> );
             })} 
 

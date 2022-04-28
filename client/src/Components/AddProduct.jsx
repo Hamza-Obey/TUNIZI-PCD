@@ -20,25 +20,24 @@ function AddProduct( props ) {
 
     const [name, setName] = useState("")
     const [desc, setDesc] = useState("")
+    const [file,setFile]=useState()
    
  
     const addpro = () => {
+        let data = new FormData()
+        data.append("file", file)
+        data.append("name",name)
+        data.append("desc",desc)
         axios.post("http://localhost:5000/produit/add",
-            {
-                "name":name,
-                "desc":desc
-            },
-        {
-          headers: {
-            "Content-Type": "application/json",
-    
-          },
-        })
+        
+        data,
+
+        
+        )
           .then((result) => {
             props.setModal(false)
-            document.location.reload()
-            //props.setProduct([...props.product,[{"name":name,"desc":desc,id:100}]])
-            //console.log(props.product);
+            console.log(result)
+            
 
           })
           .catch((err) => {
@@ -64,7 +63,7 @@ function AddProduct( props ) {
                             </CardHeader>
                             <CardBody className="px-lg-5 py-lg-5">
 
-                                <Form role="form">
+                                <Form role="form" encType="multipart/form-data">
                                     <FormGroup style={{ marginTop: "-45px " }}>
                                         <Label > PRODUCT NAME </Label>
                                         <Input
@@ -90,8 +89,12 @@ function AddProduct( props ) {
                                     <FormGroup>
                                         <Label> File feedbacks for Sentiment Analysis </Label>
                                         <Input
+                                            
                                             type="file"
                                             placeholder=" File*"
+                                            
+                                            onChange={(event) => setFile(event.target.files[0])}
+                                            
                                         />
 
                                     </FormGroup>

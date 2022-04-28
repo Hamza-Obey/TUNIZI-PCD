@@ -1,5 +1,5 @@
 .navbar-head{
-    background-color: #4d768c;
+    background-color: #1f2a2d;
     margin-bottom: -2px;
     height: 50px;
     position: fixed;
@@ -13,8 +13,8 @@
   
 }
 .Logout-container{
-    margin-top: -50px;
-    margin-left: 60px;
+    margin-top: -55px;
+    margin-left: 80px;
     display: flex;
   flex-wrap: wrap;
   cursor: pointer;
@@ -26,7 +26,7 @@
     
 }
 .logout-logout{
-    margin-top: 15px;
+    margin-top: 22px;
     color: rgb(255, 255, 255);
     font-size: 15px;
     font-weight: 800;
@@ -40,6 +40,7 @@
     font-weight: 500;
     font-size: xx-large;
     cursor: pointer;
+    margin-top: -4px;
 }
 .logo11{
     color: aliceblue;
@@ -56,6 +57,7 @@
     font-size: xx-large;
     cursor: pointer;
     margin-right: 20px;
+    margin-top: -7px;
     
     
 }

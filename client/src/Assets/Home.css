@@ -1,12 +1,23 @@
-.home-container {
-    grid-template-columns: 200px 200px 200px;
-  }.box1 {
-    align-self: stretch;
-  }
-  .box2 {
-    align-self: start;
-  }
-  .box3{
-      width: 400px;
-      align-self: stretch;
-  }
+@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+.home-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 80px;
+    padding-left: 200px;
+    
+    
+}
+.stat11{
+ padding-left: 300px;
+ padding-right: 50px;
+ padding-top: 60px;
+ 
+}
+.descriptiontitle{
+  font-family: 'Gilroy-Bold', sans-serif;
+}
+.description1{
+  font-size: 15px;
+  font-family: 'Gilroy-Light', sans-serif;
+}

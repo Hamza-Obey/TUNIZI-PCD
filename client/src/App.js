@@ -16,6 +16,7 @@ function App() {
       <Route path="/signup" caseSensitive={false} element={<Signup />} />
       
       <Route path="/" caseSensitive={false} element={<SentimentForm />} />
+      <Route path="/Home/:id" caseSensitive={false} element={<Home />} />
       <Route path="/Home" caseSensitive={false} element={<Home />} />
 
       
