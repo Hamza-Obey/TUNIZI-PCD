@@ -8,8 +8,9 @@ import Stat from '../Components/Stat'
 import background from "../Assets/Images/background.jpg"
 import axios from"axios"
 import '../Assets/Home.css'
-import { Statistic, Card, Row, Col } from 'antd';
-import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
+import BarChart from '../Components/BarChart'
+
+
 
 
 
@@ -35,7 +36,7 @@ function Home() {
         },
       })
         .then((result) => {
-          console.log(result.data.positive);
+          console.log(result.data.freq[0][0]);
          
           setPrediction(result.data) ;
           
@@ -56,7 +57,7 @@ function Home() {
         },
       })
         .then((result) => {
-          console.log(result.data.desc);
+          
          
           setDesc(result.data.desc) ;
           
@@ -70,7 +71,7 @@ function Home() {
     
 
   return (
-    <div>
+    <div >
       <div style={{
         backgroundImage: "url(" + background + ")",
         backgroundSize: "cover",
@@ -100,10 +101,18 @@ function Home() {
         <Graph prediction={prediction} />
 
         <AreaChart />
+        { 
+        Object.values(prediction).length!==0 ?
+
+        <BarChart prediction={prediction}/>
+        :
+        ""
+        }
 
 
 
       </div>
+      
 
     </div>
 

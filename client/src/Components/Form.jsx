@@ -93,7 +93,7 @@ function SentimentForm() {
           <div>
             <div className='sentiment-result '>
 
-              <input className='sentiment-sentiment' type="text" value={text} />
+              <input className='sentiment-sentiment' type="text" value={text} required />
               <p style={{ marginTop: "20px", fontSize: "30px" }}> The sentiment is : </p>
               {positive === true ?
                 <div className='sentiment-classe1'>
@@ -122,6 +122,7 @@ function SentimentForm() {
               value={text}
               className="sentiment-input"
               placeholder="        ENTER YOUR TEXT HERE PLEASE ... "
+              required
             />
             <input className="sentiment-btn" type="submit" value={result} onClick={(e) => predict(e)} />
           </div>

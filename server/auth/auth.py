@@ -2,11 +2,14 @@ from os import access
 from flask import Blueprint, flash,jsonify,request,Response
 from numpy import identity
 from models import User
-from __init__ import db, bcrypt
+from __init__ import db, bcrypt,SECRET_KEY
 from models import User 
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+import jwt
+from passlib.hash import pbkdf2_sha256
+
 
 #Creating the blueprint
 auth = Blueprint('user',__name__)
@@ -39,6 +42,23 @@ def add_user():
     elif existing_username :
         print('username already exists')
         return jsonify({'error' :'username already exists !'}) , 401
+    
+@auth.route('/user/login',methods=["POST"])
+def login() :
+    print(request.json.get('username'))
+    username = request.json.get("username")
+    password = request.json.get('password')
+    print(password)
+    user=User.query.filter_by(username=username).first()
+    print(user.password)
+    if not(user):
+        return jsonify({ "error": "Invalid username" }), 401  
+    if not (bcrypt.check_password_hash( user.password, password)):
+        return jsonify({ "error": "Invalid password" }), 401 
+    token = jwt.encode({'user': str(user.id)},SECRET_KEY)      
+    
+    return jsonify({"token": token}), 200
+    
     
 
 

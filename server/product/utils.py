@@ -2,6 +2,7 @@ from __init__ import ALLOWED_EXTENSIONS
 import pickle
 import json
 import pandas as pd
+from collections import Counter
 
 
 def allowed_file(filename):
@@ -31,7 +32,8 @@ def calcul(filename):
             neg += 1
     x = {
     "positive": pos,
-    "neg": neg
+    "neg": neg,
+    "freq":Counter(" ".join(test["text"]).split()).most_common(70)
     }
     result = json.dumps(x)
     return(result)

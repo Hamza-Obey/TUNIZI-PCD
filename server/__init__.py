@@ -17,6 +17,7 @@ jwt = JWTManager()
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'csv'}
+SECRET_KEY='hamza1234'
 
 def create_app():
     app = Flask(__name__)
